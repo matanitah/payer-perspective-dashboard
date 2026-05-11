@@ -1,0 +1,29 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "healthcare-negotiation-monitor"
+version = "0.1.0"
+description = "Tri-state (NY/CT/NJ) provider-payer negotiation intelligence dashboard powered by local Ollama LLM"
+requires-python = ">=3.11"
+dependencies = [
+    "streamlit>=1.40.0",
+    "feedparser>=6.0.11",
+    "httpx>=0.27.0",
+    "requests>=2.32.0",
+    "beautifulsoup4>=4.12.0",
+    "schedule>=1.2.0",
+]
+
+[project.scripts]
+monitor = "app.main:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["app"]
+
+[tool.uv]
+dev-dependencies = [
+    "pytest>=8.0",
+    "ruff>=0.8.0",
+]
